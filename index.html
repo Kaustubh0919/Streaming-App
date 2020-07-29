@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Open Vidu</title>
+  <link rel="styleSheet" href="style.css" type="text/css" media="screen">
+  <script src="openvidu-browser-2.14.0.js"></script>
+  <script src="axios.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="demo.js"></script>
+
+    <script>
+        $(function () {
+            Demo.init();
+        });
+    </script>
+ 
+</head>
+
+<body>
+
+  <h1>Teleconferencing</h1>
+  <!-- All of the Node.js APIs are available in this renderer process. -->
+  We are using Node.js <script>
+    document.write(process.versions.node)
+  </script>,
+  Chromium <script>
+    document.write(process.versions.chrome)
+  </script>,
+  and Electron <script>
+    document.write(process.versions.electron)
+  </script>
+
+  <div id="join">
+    <h1>Let's Start</h1>
+    <form onsubmit="initPublisher(); return false">
+      <p>
+        <label>Session:</label>
+        <input type="text" id="sessionId" value="SessionA" required>
+      </p>
+      <p>
+        <input id="screen-sharing" type="checkbox" name="screenshare"> Share screen?<br>
+      </p>
+      <p>
+        <input type="submit" value="JOIN">
+      </p>
+    </form>
+  </div>
+
+  <div id="session" style="display: none;">
+    <h1 id="session-header"></h1>
+    <input type="button" onclick="leaveSession()" value="LEAVE">
+    <div>
+      <div id="publisher">
+        <h3>YOU</h3>
+        <input type="button" onclick="Audio()" value="Audio">
+        <button id="btnMuteUnmute">Mute</button>
+        <button id="btnStartReco">Start Recording</button>
+        <button id="btnPauseReco" style="display:none">Pause</button>
+        <button id="btnResumeReco" style="display:none">Resume</button>
+        <button id="btnStopReco" style="display:none">Stop</button>
+        <br><br><audio autoplay muted controls id="audioCtr"></audio>
+        <a href="" id="downloadRecording" style="display:none">Download</a>
+      </div>
+      <div id="subscriber">
+        <h3>OTHERS</h3>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
